@@ -23,6 +23,8 @@ void InitializeGPS() {
 
 
 void getGPSData() {
+  
+  
   while (gpsSerial.available() > 0)
     if (gps.encode(gpsSerial.read()))
       displayGPSInfo();

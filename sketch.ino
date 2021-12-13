@@ -15,6 +15,7 @@ void setup() {
   //Initialize Components
   InitializeGyroscope();
   InitializeGPS();
+  InitializeRFID();
 
 }
 
