@@ -6,7 +6,6 @@ int initPitch;
 int initRoll;
 
 void InitializeGyroscope() {
-  Serial.begin(115200);
   Serial.println("Initialize MPU6050");
 
   if (!mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G)) {
@@ -16,11 +15,11 @@ void InitializeGyroscope() {
 
     Vector normAccel = mpu.readNormalizeAccel();
 
-  
 
-  // Calculate Pitch & Roll
-  initPitch = -(atan2(normAccel.XAxis, sqrt(normAccel.YAxis * normAccel.YAxis + normAccel.ZAxis * normAccel.ZAxis)) * 180.0) / M_PI;
-  initRoll = (atan2(normAccel.YAxis, normAccel.ZAxis) * 180.0) / M_PI;
+
+    // Calculate Pitch & Roll start values
+    initPitch = -(atan2(normAccel.XAxis, sqrt(normAccel.YAxis * normAccel.YAxis + normAccel.ZAxis * normAccel.ZAxis)) * 180.0) / M_PI;
+    initRoll = (atan2(normAccel.YAxis, normAccel.ZAxis) * 180.0) / M_PI;
   }
 }
 
@@ -28,7 +27,7 @@ void getGyroscopeData() {
   // Get the normalized values
   Vector normAccel = mpu.readNormalizeAccel();
 
-  
+
 
   // Calculate Pitch & Roll
   //Subtract init Pitch and roll because of normalization ( Ex. if the module was at a 30° angle on start it should be subracted from the normalized pitch to get a relative pitch or roll)
