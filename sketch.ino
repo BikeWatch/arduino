@@ -5,7 +5,8 @@
 
 //Disable if module is not connected (Testing only)
 bool gyroscopeConnected = false;
-bool gpsConnected = true;
+bool gpsConnected = false;
+bool rfidConnected = true;
 
 
 void setup() {

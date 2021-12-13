@@ -46,7 +46,7 @@ void displayGPSInfo() {
   }
   else
   {
-    Serial.println("Location: can't find locatoin");
+    Serial.println("Location: can't find location");
   }
 
   Serial.print("Date: ");
