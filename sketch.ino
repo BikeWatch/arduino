@@ -11,19 +11,19 @@ bool gpsConnected = true;
 void setup() {
   Serial.begin(115200);
 
-
+  //Initialize Components
   InitializeGyroscope();
-
-
   InitializeGPS();
 
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  Serial.println("I'm inside the loop");
+  Serial.println("__________________");
 
+  //Component logic
   getGyroscopeData();
+  getGPSData();
 
 
   delay(1000);
