@@ -6,6 +6,9 @@ int initPitch;
 int initRoll;
 
 void InitializeGyroscope() {
+  if (!gyroscopeConnected) {
+    return;
+  }
   Serial.println("Initialize MPU6050");
 
   if (!mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G)) {
@@ -24,6 +27,9 @@ void InitializeGyroscope() {
 }
 
 void getGyroscopeData() {
+  if (!gyroscopeConnected) {
+    return;
+  }
   // Get the normalized values
   Vector normAccel = mpu.readNormalizeAccel();
 
