@@ -23,7 +23,9 @@ void InitializeGPS() {
 
 
 void getGPSData() {
-  
+  if (!gpsConnected) {
+    return;
+  }
   
   while (gpsSerial.available() > 0)
     if (gps.encode(gpsSerial.read()))
