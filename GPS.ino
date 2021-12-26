@@ -34,6 +34,7 @@ void getGPSData() {
   // If 5000 milliseconds pass and there are no characters coming in
   if (millis() > 5000 && gps.charsProcessed() < 10)
   {
+    Serial.println();
     Serial.println("Info: Can't find gps module");
   }
 }
