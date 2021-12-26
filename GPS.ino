@@ -14,11 +14,11 @@ void InitializeGPS() {
   if (!gpsConnected) {
     return;
   }
-  Serial.println("Initialize GPS");
+  Serial.println("Info: Initialize GPS");
 
   gpsSerial.begin(GPSBaud);
 
-  Serial.println("Succesfully initialize gps");
+  Serial.println("Info: Succesfully initialize gps");
 }
 
 
@@ -34,7 +34,7 @@ void getGPSData() {
   // If 5000 milliseconds pass and there are no characters coming in
   if (millis() > 5000 && gps.charsProcessed() < 10)
   {
-    Serial.println("Can't find gps module");
+    Serial.println("Info: Can't find gps module");
   }
 }
 

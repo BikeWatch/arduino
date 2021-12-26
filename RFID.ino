@@ -15,7 +15,7 @@ void InitializeRFID() {
   mfrc522.PCD_Init();
   delay(4);        // Optional delay. Some board do need more time after init to be ready, see Readme
   mfrc522.PCD_DumpVersionToSerial();
-  Serial.println("Succesfully initialize rfid");
+  Serial.println("Info: Succesfully initialize rfid");
 }
 
 void getRFIDData(){
@@ -47,5 +47,5 @@ void getRFIDData(){
 //     content.concat(String(mfrc522.uid.uidByte[i], HEX));
   }
   
-  Serial.print(" | ");
+  //Serial.print(" | ");
 }

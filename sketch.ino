@@ -6,7 +6,7 @@
 const int delayTime = 1000;
 
 //Disable if module is not connected (Testing only)
-const bool gyroscopeConnected = false;
+const bool gyroscopeConnected = true;
 const bool gpsConnected = false;
 const bool rfidConnected = false;
 
@@ -22,13 +22,13 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("__________________");
+  //Serial.println("__________________");
 
   //Component logic
   getGyroscopeData();
   getGPSData();
   getRFIDData();
-
-
+  
+  Serial.println();
   delay(delayTime);
 }
