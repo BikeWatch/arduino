@@ -41,33 +41,36 @@ void getGPSData() {
 void displayGPSInfo() {
   if (gps.location.isValid())
   {
-    Serial.print("latitude: ");
-    Serial.println(gps.location.lat(), 6);
-    Serial.print("Longitude: ");
-    Serial.println(gps.location.lng(), 6);
-    Serial.print("Altitude: ");
-    Serial.println(gps.altitude.meters());
+    Serial.print("lat: ");
+    Serial.print(gps.location.lat(), 6);
+    Serial.print(" | ");
+    Serial.print("long: ");
+    Serial.print(gps.location.lng(), 6);
+    Serial.print(" | ");
+    Serial.print("alt: ");
+    Serial.print(gps.altitude.meters());
+    Serial.print(" | ");
   }
   else
   {
-    Serial.println("Location: can't find location");
+    Serial.println("lat: None | long: None | alt: None | ");
   }
 
-  Serial.print("Date: ");
+  Serial.print("date: ");
   if (gps.date.isValid())
   {
     Serial.print(gps.date.month());
     Serial.print("/");
     Serial.print(gps.date.day());
     Serial.print("/");
-    Serial.println(gps.date.year());
+    Serial.print(gps.date.year());
   }
   else
   {
-    Serial.println("Not Available");
+    Serial.println("date: None | ");
   }
 
-  Serial.print("Time: ");
+  Serial.print("time: ");
   if (gps.time.isValid())
   {
     if (gps.time.hour() < 10) Serial.print(F("0"));
@@ -80,18 +83,18 @@ void displayGPSInfo() {
     Serial.print(gps.time.second());
     Serial.print(".");
     if (gps.time.centisecond() < 10) Serial.print(F("0"));
-    Serial.println(gps.time.centisecond());
+    Serial.print(gps.time.centisecond());
   }
   else
   {
-    Serial.println("Not Available");
+    Serial.println("time: None | ");
   }
 
-  Serial.print("Speed in km/h = "); 
-  Serial.println(gps.speed.kmph());
-
-  Serial.print("Altitude in meters = "); 
-  Serial.println(gps.altitude.meters());
+//  Serial.print("Speed in km/h = "); 
+//  Serial.println(gps.speed.kmph());
+//
+//  Serial.print("Altitude in meters = "); 
+//  Serial.println(gps.altitude.meters());
 
   Serial.println();
 }

@@ -46,4 +46,5 @@ void getGyroscopeData() {
   Serial.print(" | ");
   Serial.print("pitch: ");
   Serial.print(pitch);
+  Serial.print(" | ");
 }
