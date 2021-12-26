@@ -3,12 +3,12 @@
    Created by Steffen Gemin
 */
 
-const int delayTime = 1000
+const int delayTime = 1000;
 
 //Disable if module is not connected (Testing only)
-bool gyroscopeConnected = true;
-bool gpsConnected = false;
-bool rfidConnected = false;
+const bool gyroscopeConnected = false;
+const bool gpsConnected = false;
+const bool rfidConnected = false;
 
 
 void setup() {

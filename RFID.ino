@@ -19,7 +19,11 @@ void InitializeRFID() {
 }
 
 void getRFIDData(){
-  Serial.println("Searching for card");
+  if (!rfidConnected) {
+    return;
+  }
+  
+  //Serial.println("Searching for card");
   // Look for new cards
   if ( ! mfrc522.PICC_IsNewCardPresent()) 
   {
@@ -31,17 +35,17 @@ void getRFIDData(){
     return;
   }
   //Show UID on serial monitor
-  Serial.print("UID tag :");
+  Serial.print("uuid: ");
   String content= "";
   byte letter;
   for (byte i = 0; i < mfrc522.uid.size; i++) 
   {
      Serial.print(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " ");
-     Serial.println();
-     Serial.print(mfrc522.uid.uidByte[i], HEX);
-     content.concat(String(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " "));
-     content.concat(String(mfrc522.uid.uidByte[i], HEX));
+//     Serial.println();
+//     Serial.print(mfrc522.uid.uidByte[i], HEX);
+//     content.concat(String(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " "));
+//     content.concat(String(mfrc522.uid.uidByte[i], HEX));
   }
   
-  Serial.println();
+  Serial.print(" | ");
 }
