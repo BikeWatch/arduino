@@ -1,12 +1,14 @@
 /*
    Created for Edge Computing
-
+   Created by Steffen Gemin
 */
 
+const int delayTime = 1000
+
 //Disable if module is not connected (Testing only)
-bool gyroscopeConnected = false;
+bool gyroscopeConnected = true;
 bool gpsConnected = false;
-bool rfidConnected = true;
+bool rfidConnected = false;
 
 
 void setup() {
@@ -20,13 +22,13 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   Serial.println("__________________");
 
   //Component logic
   getGyroscopeData();
   getGPSData();
+  getRFIDData();
 
 
-  delay(1000);
+  delay(delayTime);
 }

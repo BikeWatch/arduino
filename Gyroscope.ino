@@ -41,9 +41,9 @@ void getGyroscopeData() {
   int roll = ((atan2(normAccel.YAxis, normAccel.ZAxis) * 180.0) / M_PI) - initRoll;
 
   // Output
-  Serial.print(" Pitch = ");
-  Serial.print(pitch);
-  Serial.print(" Roll = ");
+  Serial.print("roll: ");
   Serial.print(roll);
-  Serial.println();
+  Serial.print(" | ");
+  Serial.print("pitch: ");
+  Serial.print(pitch);
 }

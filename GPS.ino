@@ -41,7 +41,7 @@ void getGPSData() {
 void displayGPSInfo() {
   if (gps.location.isValid())
   {
-    Serial.print("Latitude: ");
+    Serial.print("latitude: ");
     Serial.println(gps.location.lat(), 6);
     Serial.print("Longitude: ");
     Serial.println(gps.location.lng(), 6);
@@ -86,6 +86,12 @@ void displayGPSInfo() {
   {
     Serial.println("Not Available");
   }
+
+  Serial.print("Speed in km/h = "); 
+  Serial.println(gps.speed.kmph());
+
+  Serial.print("Altitude in meters = "); 
+  Serial.println(gps.altitude.meters());
 
   Serial.println();
 }
