@@ -25,8 +25,8 @@ void InitializeGPS() {
 void getGPSData() {
   // This sketch displays information every time a new sentence is correctly encoded.
   while (gpsSerial.available() > 0){
-    if (gps.encode(gpsSerial.read()))
-      displayGPSInfo();
+    gps.encode(gpsSerial.read());
+      
     //Serial.println("Inside while");
   }
     
@@ -101,6 +101,6 @@ void displayGPSInfo() {
   }else{
     Serial.print("speed: None | ");
   }
-  Serial.println("DONE");
-  delay(1000);
+  //Serial.println("DONE");
+//  delay(1000);
 }

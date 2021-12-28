@@ -45,5 +45,5 @@ void getRFIDData(){
   }
   Serial.print(content);
   
-  //Serial.print(" | ");
+  Serial.print(" | ");
 }
