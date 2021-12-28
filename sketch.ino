@@ -4,11 +4,13 @@
 */
 
 const int delayTime = 1000;
+unsigned long delayStart = 0;
+bool delayRunning = true; 
 
 //Disable if module is not connected (Testing only)
 const bool gyroscopeConnected = true;
 const bool gpsConnected = true;
-const bool rfidConnected = true;
+const bool rfidConnected = false;
 
 
 void setup() {
@@ -18,17 +20,22 @@ void setup() {
   InitializeGyroscope();
   InitializeGPS();
   InitializeRFID();
+  delayStart = millis();
+
+  unsigned long delayStart = 0;
 
 }
 
 void loop() {
   //Serial.println("__________________");
-
-  //Component logic
-  getGyroscopeData();
-  getGPSData();
-  getRFIDData();
+  //Serial.println("-");
   
-  Serial.println();
-  delay(delayTime);
+  getGPSData();
+  if (((millis() - delayStart) >= delayTime)) {
+    delayStart += delayTime;
+    getGyroscopeData();
+    getRFIDData();
+  }
+
+  //Try milis delay
 }

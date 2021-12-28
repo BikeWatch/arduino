@@ -1,14 +1,14 @@
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
 
-int RXPin = 2;
-int TXPin = 3;
+int RXPin = 3;
+int TXPin = 2;
 
 int GPSBaud = 9600;
 
 TinyGPSPlus gps;
 
-SoftwareSerial gpsSerial(RXPin, TXPin);
+SoftwareSerial gpsSerial(3, 2);
 
 void InitializeGPS() {
   if (!gpsConnected) {
@@ -23,20 +23,21 @@ void InitializeGPS() {
 
 
 void getGPSData() {
-  if (!gpsConnected) {
-    return;
-  }
-  
-  while (gpsSerial.available() > 0)
+  // This sketch displays information every time a new sentence is correctly encoded.
+  while (gpsSerial.available() > 0){
     if (gps.encode(gpsSerial.read()))
       displayGPSInfo();
+    //Serial.println("Inside while");
+  }
+    
 
   // If 5000 milliseconds pass and there are no characters coming in
-  if (millis() > 5000 && gps.charsProcessed() < 10)
-  {
-    Serial.println();
-    Serial.println("Info: Can't find gps module");
-  }
+  // over the software serial port, show a "No GPS detected" error
+//  if (millis() > 5000 && gps.charsProcessed() < 10)
+//  {
+//    Serial.println("No GPS detected");
+//    while(true);
+//  }
 }
 
 void displayGPSInfo() {
@@ -54,7 +55,7 @@ void displayGPSInfo() {
   }
   else
   {
-    Serial.println("lat: None | long: None | alt: None | ");
+    Serial.print("lat: None | long: None | alt: None | ");
   }
 
   Serial.print("date: ");
@@ -65,10 +66,11 @@ void displayGPSInfo() {
     Serial.print(gps.date.day());
     Serial.print("/");
     Serial.print(gps.date.year());
+     Serial.print(" | ");
   }
   else
   {
-    Serial.println("date: None | ");
+    Serial.print("date: None | ");
   }
 
   Serial.print("time: ");
@@ -85,17 +87,20 @@ void displayGPSInfo() {
     Serial.print(".");
     if (gps.time.centisecond() < 10) Serial.print(F("0"));
     Serial.print(gps.time.centisecond());
+     Serial.print(" | ");
   }
   else
   {
-    Serial.println("time: None | ");
+    Serial.print("time: None | ");
   }
 
-//  Serial.print("Speed in km/h = "); 
-//  Serial.println(gps.speed.kmph());
-//
-//  Serial.print("Altitude in meters = "); 
-//  Serial.println(gps.altitude.meters());
-
-  Serial.println();
+  if(gps.speed.isValid()){
+    Serial.print("speed: ");
+    Serial.print(gps.speed.kmph());
+    Serial.print(" | ");
+  }else{
+    Serial.print("speed: None | ");
+  }
+  Serial.println("DONE");
+  delay(1000);
 }
