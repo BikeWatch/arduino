@@ -35,7 +35,7 @@ void getRFIDData(){
     return;
   }
   //Show UID on serial monitor
-  Serial.print("uuid: ");
+  Serial.print("uuid:");
   String content= "";
   byte letter;
   for (byte i = 0; i < mfrc522.uid.size; i++) 
