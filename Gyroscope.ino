@@ -22,7 +22,7 @@ void InitializeGyroscope() {
 
     // Calculate Pitch & Roll start values
     initPitch = -(atan2(normAccel.XAxis, sqrt(normAccel.YAxis * normAccel.YAxis + normAccel.ZAxis * normAccel.ZAxis)) * 180.0) / M_PI;
-    initRoll = (atan2(normAccel.YAxis, normAccel.ZAxis) * 180.0) / M_PI;
+    initRoll = (atan2(normAccel.YAxis, sqrt(normAccel.XAxis * normAccel.XAxis + normAccel.ZAxis * normAccel.ZAxis)) *180 / M_PI);
   }
 }
 
@@ -37,14 +37,16 @@ void getGyroscopeData() {
 
   // Calculate Pitch & Roll
   //Subtract init Pitch and roll because of normalization ( Ex. if the module was at a 30° angle on start it should be subracted from the normalized pitch to get a relative pitch or roll)
-  int pitch = (-(atan2(normAccel.XAxis, sqrt(normAccel.YAxis * normAccel.YAxis + normAccel.ZAxis * normAccel.ZAxis)) * 180.0) / M_PI) - initPitch;
-  int roll = ((atan2(normAccel.YAxis, normAccel.ZAxis) * 180.0) / M_PI) - initRoll;
+  //Just basic math ;)
+  int pitch = ((-(atan2(normAccel.XAxis, sqrt(normAccel.YAxis * normAccel.YAxis + normAccel.ZAxis * normAccel.ZAxis)) * 180.0) / M_PI) - initPitch);
+  int roll = ((atan2(normAccel.YAxis, sqrt(normAccel.XAxis * normAccel.XAxis + normAccel.ZAxis * normAccel.ZAxis)) *180 / M_PI) - initRoll);
+  
 
   // Output
   Serial.print("roll: ");
-  Serial.print(roll);
+  Serial.print(roll % 180);
   Serial.print(" | ");
   Serial.print("pitch: ");
-  Serial.print(pitch);
+  Serial.print(pitch % 180);
   Serial.print(" | ");
 }
