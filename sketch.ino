@@ -8,9 +8,9 @@ unsigned long delayStart = 0;
 bool delayRunning = true; 
 
 //Disable if module is not connected (Testing only)
-const bool gyroscopeConnected = true;
+const bool gyroscopeConnected = false;
 const bool gpsConnected = false;
-const bool rfidConnected = false;
+const bool rfidConnected = true;
 
 
 void setup() {

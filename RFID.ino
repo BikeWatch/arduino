@@ -14,6 +14,7 @@ void InitializeRFID() {
   SPI.begin();
   mfrc522.PCD_Init();
   delay(4);        // Optional delay. Some board do need more time after init to be ready, see Readme
+  Serial.print("Info: "); 
   mfrc522.PCD_DumpVersionToSerial();
   Serial.println("Info: Succesfully initialize rfid");
 }
