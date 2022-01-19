@@ -24,7 +24,6 @@ void getRFIDData(){
     return;
   }
   
-  //Serial.println("Searching for card");
   // Look for new cards
   if ( ! mfrc522.PICC_IsNewCardPresent()) 
   {

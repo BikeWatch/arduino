@@ -29,15 +29,6 @@ void getGPSData() {
       
     //Serial.println("Inside while");
   }
-    
-
-  // If 5000 milliseconds pass and there are no characters coming in
-  // over the software serial port, show a "No GPS detected" error
-//  if (millis() > 5000 && gps.charsProcessed() < 10)
-//  {
-//    Serial.println("No GPS detected");
-//    while(true);
-//  }
 }
 
 void displayGPSInfo() {
@@ -101,6 +92,4 @@ void displayGPSInfo() {
   }else{
     Serial.print("speed: None | ");
   }
-  //Serial.println("DONE");
-//  delay(1000);
 }
